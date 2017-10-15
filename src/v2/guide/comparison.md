@@ -1,5 +1,5 @@
 ---
-title: Comparison with Other Frameworks
+title: So sánh với những frameworks khác
 type: guide
 order: 801
 ---
