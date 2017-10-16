@@ -1,14 +1,14 @@
 ---
-title: So sánh với những frameworks khác
+title: So sánh với những framework khác
 type: guide
 order: 801
 ---
 
-This is definitely the most difficult page in the guide to write, but we do feel it's important. Odds are, you've had problems you tried to solve and you've used another library to solve them. You're here because you want to know if Vue can solve your specific problems better. That's what we hope to answer for you.
+Đây chắc chắc là trang khó nhất để viết trong toàn bộ phần hướng dẫn này, nhưng chúng tôi cảm thấy nó quan trọng. Có điều chắc chắn là, bạn có các vấn đề bạn đã cố gắng giải quyết và sử dụng một thư viện khác để làm việc đó. Bạn ở đây bởi vì bạn muốn biết xem Vue có thể giải quyết chúng tốt hơn không. Và đó là cái mà chúng tôi hi vọng sẽ cho bạn câu trả lời.
 
-We also try very hard to avoid bias. As the core team, we obviously like Vue a lot. There are some problems we think it solves better than anything else out there. If we didn't believe that, we wouldn't be working on it. We do want to be fair and accurate though. Where other libraries offer significant advantages, such as React's vast ecosystem of alternative renderers or Knockout's browser support back to IE6, we try to list these as well.
+Chúng tôi cũng rất cố gắng để tránh thiên vị. Là những thành viên chính, chúng tôi chắc chắc thích Vue rất nhiều. Có những vấn đề chúng tôi nghĩ Vue giải quyết tốt hơn bất cứ thư viên nào khác. Nếu chúng tôi không tin tưởng vào điều đó, chúng tôi sẽ không tiếp tục xây dụng Vue. Mặc dù vậy, chúng tôi cũng muốn sự công bằng và chính xác. Khi những thư viện khác cung cấp những lợi ích đáng kể, ví dụ như hệ sinh thái đồ sộ các renderer thay thế của React hay việc Knockout hỗ trợ trình duyệt tới tận IE6, chúng tôi cũng cố gắng liệt kê chúng.
 
-We'd also like **your** help keeping this document up-to-date because the JavaScript world moves fast! If you notice an inaccuracy or something that doesn't seem quite right, please let us know by [opening an issue](https://github.com/vuejs/vuejs.org/issues/new?title=Inaccuracy+in+comparisons+guide).
+Chúng tôi cũng muốn **các bạn** giúp cho tài liệu này được cập nhật bởi vì "thế giới" JavaScript phát triển rất nhanh! Nếu bạn nhận ra một sự thiếu chính xác hoặc một cái gì đó có vẻ không đúng, vui lòng cho chúng tôi biết bằng việc [mở một issue](https://github.com/vuejs/vuejs.org/issues/new?title=Inaccuracy+in+comparisons+guide).
 
 ## React
 
