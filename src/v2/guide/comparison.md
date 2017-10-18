@@ -12,11 +12,12 @@ Chúng tôi cũng muốn **các bạn** giúp cho tài liệu này được cậ
 
 ## React
 
-React and Vue share many similarities. They both:
+React và Vue chia sẻ nhiều điểm tương đồng. Cả 2 đều:
 
-- utilize a virtual DOM
+- sử dụng một virtual DOM()
 - provide reactive and composable view components
-- maintain focus in the core library, with concerns such as routing and global state management handled by companion libraries
+-
+- Tập trung duy trì phần lõi của thư viện, với những tính năng ví dụ như routing(điều hướng) và quản lý trạng thái toàn cục được giải quyết bằng các thư viện hỗ trợ
 
 Being so similar in scope, we've put more time into fine-tuning this comparison than any other. We want to ensure not only technical accuracy, but also balance. We point out where React outshines Vue, for example in the richness of their ecosystem and abundance of their custom renderers.
 
@@ -222,9 +223,9 @@ It is also totally feasible to offer deeper integration between Vue with Web Com
 
 ## Riot
 
-Riot 2.0 provides a similar component-based development model (which is called a "tag" in Riot), with a minimal and beautifully designed API. Riot and Vue probably share a lot in design philosophies. However, despite being a bit heavier than Riot, Vue does offer some significant advantages:
+Riot 2.0 cung cấp một mô hình phát triển dựa trên component (component-based) tương tự (được gọi là "tag" trong Riot), với một hệ thống API được thiết kế tối giản và "đẹp". Riot and Vue có vẻ chia sẻ rất nhiều trong triết lý thiết kế. Tuy nhiên, mặc dù nặng hơn Riot một chút, Vue thực sự cung cấp một số những lợi thế đáng kế:
 
-- [Transition effect system](transitions.html). Riot has none.
-- A far more powerful router. Riot’s routing API is extremely minimal.
-- Better performance. Riot [traverses a DOM tree](http://riotjs.com/compare/#virtual-dom-vs-expressions-binding) rather than using a virtual DOM, so suffers from the same performance issues as AngularJS.
-- More mature tooling support. Vue provides official support for [webpack](https://github.com/vuejs/vue-loader) and [Browserify](https://github.com/vuejs/vueify), while Riot relies on community support for build system integration.
+- [Hệ thống hiệu ứng chuyển đổi](transitions.html). Riot không có.
+- Một hệ thống điều hướng (router) mạnh mẽ hơn nhiều. Router API (API điều hướng) của Riot vô cùng tối giản.
+- Hiệu xuất tốt hơn. Riot sử dụng việc [duyệt qua một cây DOM](http://riotjs.com/compare/#virtual-dom-vs-expressions-binding) thay vì sử dụng một DOM ảo (virtual DOM) khiến nó phải chịu các vấn đề về hiệu xuất giống như AngularJS.
+- Hỗ trợ công các công cụ hoàn thiện hơn. Vue cung cấp sự hỗ trợ chính thức cho [webpack](https://github.com/vuejs/vue-loader) và [Browserify](https://github.com/vuejs/vueify), trong khi đó Riot phải dựa vào dự hộ trợ của cộng đồng cho hệ thống xây dựng tích hợp.
