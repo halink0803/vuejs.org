@@ -25,15 +25,21 @@ With that said, it's inevitable that the comparison would appear biased towards 
 
 The React community [has been instrumental](https://github.com/vuejs/vuejs.org/issues/364) in helping us achieve this balance, with special thanks to Dan Abramov from the React team. He was extremely generous with his time and considerable expertise to help us refine this document until we were [both happy](https://github.com/vuejs/vuejs.org/issues/364#issuecomment-244575740) with the final result.
 
-### Performance
+### Hiệu suất
 
 Both React and Vue offer comparable performance in most commonly seen use cases, with Vue usually slightly ahead due to its lighter-weight Virtual DOM implementation. If you are interested in numbers, you can check out this [3rd party benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html) which focuses on raw rendering/updating performance. Note that this does not take complex component structures into account, so should only be considered a reference rather than a verdict.
+
+Cả React và Vue đều cung cấp một hiệu suất khá tương đồng trong hầu hết các tình huống sử dụng, và Vue thường nhanh hơn một chút nhờ vào việc cài đặt được một Virtual DOM nhẹ hơn. Nếu bạn có hứng thú với các con số thì [3rd party benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html) cung cấp số liệu hiệu suất tập trung vào raw rendering/updating. Lưu ý rằng số liệu kia không tính đến các trường hợp cấu trúc component phức tạp, do đó các bạn chỉ nên lấy nó để tham khảo chứ nó không phải đánh giá chính thức về hiệu suất.
 
 #### Optimization Efforts
 
 In React, when a component's state changes, it triggers the re-render of the entire component sub-tree, starting at that component as root. To avoid unnecessary re-renders of child components, you need to either use `PureComponent` or implement `shouldComponentUpdate` whenever you can. You may also need to use immutable data structures to make your state changes more optimization-friendly. However, in certain cases you may not be able to rely on such optimizations because `PureComponent/shouldComponentUpdate` assumes the entire sub tree's render output is determined by the props of the current component. If that is not the case, then such optimizations may lead to inconsistent DOM state.
 
+Trong React, khi state của một component thay đổi, nó sẽ render lại toàn bộ component phụ, bắt đầu từ component đó như là gốc. Để tránh việc render lại component con một cách không cần thiết, bạn hoặc là phải sử dụng `PureComponent` hoặc cài đặt `shouldComponentUpdate` khi có thể. Bạn có thể cũng cần phải sử dụng cấu trúc dữ liệu không thay đổi để làm cho việc thay đổi state dễ dàng tối ưu. Tuy nhiên, trong những trường hợp cụ thể, bạn không thể nào tin tưởng vào
+
 In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have `shouldComponentUpdate` automatically implemented for you, without the nested component caveats.
+
+Trong Vue, những dependencies của một component được tự động theo dõi khi nó được render, nhờ đó hệ thống biết chính xác component nào thực sự cần được render lại khi có thay đổi về trạng thái. Mỗi component có thể được hiểu là tự động có `shouldComponentUpdate` được cài đặt sẵn cho bạn mà không
 
 Overall this removes the need for a whole class of performance optimizations from the developer's plate, and allows them to focus more on building the app itself as it scales.
 
@@ -41,19 +47,28 @@ Overall this removes the need for a whole class of performance optimizations fro
 
 In React, everything is just JavaScript. Not only are HTML structures expressed via JSX, the recent trends also tend to put CSS management inside JavaScript as well. This approach has its own benefits, but also comes with various trade-offs that may not seem worthwhile for every developer.
 
+Trong React, tất cả mọi thứ đều là JavaScript. Không những cấu trúc HTML được biểu diễn qua JSX, mà một số xu hướng gần đây đưa phần quản lý CSS vào bên trong JavaScript nữa. Cách tiếp cận này có những lợi ích của nó, nhưng đồng thời cũng phải trả giá mà có vẻ là không đáng cho tất cả mọi nhà phát triển.
+
 Vue embraces classic web technologies and builds on top of them. To show you what that means, we'll dive into some examples.
 
-#### JSX vs Templates
+Vue
+
+#### JSX với Templates
 
 In React, all components express their UI within render functions using JSX, a declarative XML-like syntax that works within JavaScript.
 
+Trong React, tất cả component biểu diễn giao diện với các render function sử dụng JSX, một kiểu cú pháp khai báo giống như XML mà tương thích với JavaScript.
+
 Render functions with JSX have a few advantages:
+Các function render với JSX có một số lợi ích:
 
 - You can leverage the power of a full programming language (JavaScript) to build your view. This includes temporary variables, flow controls, and directly referencing JavaScript values in scope.
 
 - The tooling support (e.g. linting, type checking, editor autocompletion) for JSX is in some ways more advanced than what's currently available for Vue templates.
 
 In Vue, we also have [render functions](render-function.html) and even [support JSX](render-function.html#JSX), because sometimes you do need that power. However, as the default experience we offer templates as a simpler alternative. Any valid HTML is also a valid Vue template, and this leads to a few advantages of its own:
+
+Trong Vue, chúng tôi cũng có các [render function](render-function.html) và thậm chí [hỗ trợ JSX](render-function.html#JSX), bởi vì thỉnh thoảng bạn cần khả năng đó. Tuy nhiên, 
 
 - For many developers who have been working with HTML, templates feel more natural to read and write. The preference itself can be somewhat subjective, but if it makes the developer more productive then the benefit is objective.
 
@@ -65,7 +80,11 @@ In Vue, we also have [render functions](render-function.html) and even [support 
 
 Some argue that you'd need to learn an extra DSL (Domain-Specific Language) to be able to write templates - we believe this difference is superficial at best. First, JSX doesn't mean the user doesn't need to learn anything - it's additional syntax on top of plain JavaScript, so it can be easy for someone familiar with JavaScript to learn, but saying it's essentially free is misleading. Similarly, a template is just additional syntax on top of plain HTML and thus has very low learning cost for those who are already familiar with HTML. With the DSL we are also able to help the user get more done with less code (e.g. `v-on` modifiers). The same task can involve a lot more code when using plain JSX or render functions.
 
+Một số người cho rằng bạn cần phải học thêm DSL(Domain-Specific Language - Ngôn ngữ cụ thể miền)
+
 On a higher level, we can divide components into two categories: presentational ones and logical ones. We recommend using templates for presentational components and render function / JSX for logical ones. The percentage of these components depends on the type of app you are building, but in general we find presentational ones to be much more common.
+
+Ở một cấp cao hơn, chúng ta có thể chia component thành 2 loại:
 
 #### Component-Scoped CSS
 
@@ -135,9 +154,13 @@ MobX has become quite popular in the React community and it actually uses a near
 
 Some of Vue's syntax will look very similar to AngularJS (e.g. `v-if` vs `ng-if`). This is because there were a lot of things that AngularJS got right and these were an inspiration for Vue very early in its development. There are also many pains that come with AngularJS however, where Vue has attempted to offer a significant improvement.
 
-### Complexity
+Một vài cú pháp của Vue trông sẽ rất giống với AngularJS (ví dụ: `v-if` với `ng-if`). Bởi vì AngularJS có rất nhiều thứ đúng đắn đã là nguồn cảm hứng cho Vue trong những ngày đầu phát triển. Tuy nhiên cũng có rất nhiều những hạn chế của AngularJS mà Vue cố gắng cải thiện một cách
+
+### Độ phức tạp
 
 Vue is much simpler than AngularJS, both in terms of API and design. Learning enough to build non-trivial applications typically takes less than a day, which is not true for AngularJS.
+
+Vue thì đơn giản hơn AngularJS, bao gồm cả API và thiết kế. Thời gian học đủ để xây dựng một ứng dụng không vớ vẩn thường chỉ mất ít hơn một ngày, với AngularJS thì không thể.
 
 ### Flexibility and Modularity
 
@@ -173,21 +196,30 @@ However, not everyone wants to use TypeScript. In many smaller-scale use cases, 
 
 Finally, although not as deeply integrated with TypeScript as Angular is, Vue also offers [official typings](https://github.com/vuejs/vue/tree/dev/types) and [official decorator](https://github.com/vuejs/vue-class-component) for those who wish to use TypeScript with Vue. We are also actively collaborating with the TypeScript and VSCode teams at Microsoft to improve the TS/IDE experience for Vue + TS users.
 
-### Size and Performance
+### Kích thước và hiệu suát
 
 In terms of performance, both frameworks are exceptionally fast and there isn't enough data from real world use cases to make a verdict. However if you are determined to see some numbers, Vue 2.0 seems to be ahead of Angular according to this [3rd party benchmark](http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html).
 
+Nhắc đến hiệu suất, cả 2 framework đều rất nhanh và không có đủ dữ liệu từ thực tế để có thể xác định. Tuy nhiên, nếu các bạn muốn thấy một vài con số, Vue 2.0 dường như đang dẫn trước so với Angular theo như [3rd party benchmark](http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html).
+
 Recent versions of Angular, with [AOT compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) and [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), have been able to get its size down considerably. However, a full-featured Vue 2 project with Vuex + Vue Router included (~30KB gzipped) is still significantly lighter than an out-of-the-box, AOT-compiled application generated by `angular-cli` (~130KB gzipped).
 
-### Flexibility
+Các phiên bản gần đây của Angular, với [AOT compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) và [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), giúp cho kích thước của Angular giảm đáng kể. Tuy nhiên, một dự án đầy đủ tính năng của Vue 2 với Vuex + Vue Router (~30KB gzipped) vẫn nhẹ hơn nhiều so với một ứng dụng AOT-compiled được sinh tự động bởi `angular-cli` (~130KB gzipped).
+
+### Độ linh hoạt
 
 Vue is much less opinionated than Angular, offering official support for a variety of build systems, with no restrictions on how you structure your application. Many developers enjoy this freedom, while some prefer having only one Right Way to build any application.
+
+Vue ít cứng nhắc hơn nhiều so với Angular, với việc hỗ trợ chính thức cho nhiều hệ xây dựng khác nhau và không có một giới hạn nào trong việc bạn cấu trúc ứng dụng của mình. Nhiều nhà phát triển thích sự tự do này, trong khi những người khác thì thích chỉ có duy nhất một cách đúng để xây dựng ứng dụng.
 
 ### Learning Curve
 
 To get started with Vue, all you need is familiarity with HTML and ES5 JavaScript (i.e. plain JavaScript). With these basic skills, you can start building non-trivial applications within less than a day of reading [the guide](./).
 
+Để bắt đầu với Vue, tất cả những gì bạn cần là quen thuộc với HTML và ES5 JavaScript (ví dụ: JavaScript thuần). Với những kĩ năng cơ bản này, bạn có thể bắt đầu xây dựng một ứng dụng hẳn hỏi với ít hơn một ngày ngồi đọc [hướng dẫn](./).
+
 Angular's learning curve is much steeper. The API surface of the framework is huge and as a user you will need to familiarize yourself with a lot more concepts before getting productive. The complexity of Angular is largely due to its design goal of targeting only large, complex applications - but that does make the framework a lot more difficult for less-experienced developers to pick up.
+
 
 ## Ember
 
@@ -213,13 +245,21 @@ There also seem to be philosophical differences in the API design which if you'r
 
 Polymer is yet another Google-sponsored project and in fact was a source of inspiration for Vue as well. Vue's components can be loosely compared to Polymer's custom elements and both provide a very similar development style. The biggest difference is that Polymer is built upon the latest Web Components features and requires non-trivial polyfills to work (with degraded performance) in browsers that don't support those features natively. In contrast, Vue works without any dependencies or polyfills down to IE9.
 
+Polymer là một project được Google tài trợ và thực tế cũng là một nguồn cảm hứng cho Vue. Component của Vue có thể khá giống với 'custom element' của Polymer và cả 2 cùng cung cấp một phong cách phát triển tương tự nhau. Sự khác nhau lớn nhất là Polymer
+
 In Polymer 1.0, the team has also made its data-binding system very limited in order to compensate for the performance. For example, the only expressions supported in Polymer templates are boolean negation and single method calls. Its computed property implementation is also not very flexible.
+
+Trong Polymer 1.0, đội phát triển
 
 Polymer custom elements are authored in HTML files, which limits you to plain JavaScript/CSS (and language features supported by today's browsers). In comparison, Vue's single file components allows you to easily use ES2015+ and any CSS preprocessors you want.
 
 When deploying to production, Polymer recommends loading everything on-the-fly with HTML Imports, which assumes browsers implementing the spec, and HTTP/2 support on both server and client. This may or may not be feasible depending on your target audience and deployment environment. In cases where this is not desirable, you will have to use a special tool called Vulcanizer to bundle your Polymer elements. On this front, Vue can combine its async component feature with webpack's code-splitting feature to easily split out parts of the application bundle to be lazy-loaded. This ensures compatibility with older browsers while retaining great app loading performance.
 
+Khi chạy một sản phẩm, Polymer khuyến khích tải mọi thứ on-the-fly()
+
 It is also totally feasible to offer deeper integration between Vue with Web Component specs such as Custom Elements and Shadow DOM style encapsulation - however at this moment we are still waiting for the specs to mature and be widely implemented in all mainstream browsers before making any serious commitments.
+
+
 
 ## Riot
 
