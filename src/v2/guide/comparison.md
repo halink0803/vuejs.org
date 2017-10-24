@@ -68,15 +68,23 @@ Các function render với JSX có một số lợi ích:
 
 In Vue, we also have [render functions](render-function.html) and even [support JSX](render-function.html#JSX), because sometimes you do need that power. However, as the default experience we offer templates as a simpler alternative. Any valid HTML is also a valid Vue template, and this leads to a few advantages of its own:
 
-Trong Vue, chúng tôi cũng có các [render function](render-function.html) và thậm chí [hỗ trợ JSX](render-function.html#JSX), bởi vì thỉnh thoảng bạn cần khả năng đó. Tuy nhiên, 
+Trong Vue, chúng tôi cũng có các [render function](render-function.html) và thậm chí [hỗ trợ JSX](render-function.html#JSX), bởi vì thỉnh thoảng bạn cần khả năng đó. Tuy nhiên, trải nghiệm mặc định chúng tôi cung cấp template như là một sự thay thế đơn giản hơn. Bất cứ cú pháp html hợp lệ nào cũng hợp lệ trong Vue template, việc này mang đến một số những lợi ích của nó:
 
 - For many developers who have been working with HTML, templates feel more natural to read and write. The preference itself can be somewhat subjective, but if it makes the developer more productive then the benefit is objective.
 
+- Với nhiều nhà phát triển, những người đã và đang làm việc với HTML, template cho cảm giác tự nhiên hơn để đọc và viết. Lợi thế này bản thân nó có vẻ hơi chủ quan, nhưng nếu nó giúp cho lập trình viên hiệu quả hơn thì lợi ích của nó là khách quan.
+
 -  HTML-based templates make it much easier to progressively migrate existing applications to take advantage of Vue's reactivity features.
+
+- Những template dựa trên HTML giúp cho nó dễ dàng hơn để chuyển những ứng dụng có sẵn sang Vue với những lợi thế về tương tác.
 
 - It also makes it much easier for designers and less experienced developers to parse and contribute to the codebase.
 
+- Việc này cũng làm dễ dàng hơn cho người thiết kế và những lập trình viên ít kinh nghiệm có thể chuyển đổi và đóng góp vào trong codebase.
+
 - You can even use pre-processors such as Pug (formerly known as Jade) to author your Vue templates.
+
+- Bạn thậm chí có thể sử dụng những bộ biên tập trước (pre-processors) như Pug (trước đây được biết đến với tên Jade) để tạo Vue template của bạn.
 
 Some argue that you'd need to learn an extra DSL (Domain-Specific Language) to be able to write templates - we believe this difference is superficial at best. First, JSX doesn't mean the user doesn't need to learn anything - it's additional syntax on top of plain JavaScript, so it can be easy for someone familiar with JavaScript to learn, but saying it's essentially free is misleading. Similarly, a template is just additional syntax on top of plain HTML and thus has very low learning cost for those who are already familiar with HTML. With the DSL we are also able to help the user get more done with less code (e.g. `v-on` modifiers). The same task can involve a lot more code when using plain JSX or render functions.
 
@@ -92,7 +100,11 @@ Unless you spread components out over multiple files (for example with [CSS Modu
 
 If you are a fan of CSS-in-JS, many of the popular CSS-in-JS libraries support Vue (e.g. [styled-components-vue](https://github.com/styled-components/vue-styled-components) and [vue-emotion](https://github.com/egoist/vue-emotion)). The main difference between React and Vue here is that the default method of styling in Vue is through more familiar `style` tags in [single-file components](single-file-components.html).
 
+
+Nếu bạn là một fan của CSS-in-JS, có nhiều thư viện CSS-in-JS hỗ trợ Vue (ví dụ: [styled-components-vue](https://github.com/styled-components/vue-styled-components) và [vue-emotion](https://github.com/egoist/vue-emotion)). Khác biệt lớn nhất giữa React và Vue ở đây là phương pháp style mặc định của Vue giống với `style` tag trong [single-file-components](single-file-components.html)
+
 [Single-file components](single-file-components.html) give you full access to CSS in the same file as the rest of your component code.
+[Single-file components](single-file-components.html) cho bạn khả năng truy cập tới CSS trong cùng một file như với phần còn lại của code component.
 
 ``` html
 <style scoped>
@@ -106,7 +118,11 @@ If you are a fan of CSS-in-JS, many of the popular CSS-in-JS libraries support V
 
 The optional `scoped` attribute automatically scopes this CSS to your component by adding a unique attribute (such as `data-v-21e5b78`) to elements and compiling `.list-container:hover` to something like `.list-container[data-v-21e5b78]:hover`.
 
+Thuộc tính tùy chọn `scoped` sẽ tự động giới hạn CSS này chỉ trong component của bạn bằng việc thêm một thuộc tính duy nhất (ví dụ như `data-v-21e5b78`) vào và dịch `list-containter:hover` thành kiểu như `.list-containter[data-v-21e5b78]:hover`
+
 Lastly, the styling in Vue's single-file component's is very flexible. Through [vue-loader](https://github.com/vuejs/vue-loader), you can use any preprocessor, post-processor, and even deep integration with [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) -- all within the `<style>` element.
+
+Cuối cùng, styling trong một file (single-file) của Vue rất linh hoạt. Thông qua [vue-loader](https://github.com/vuejs/vue-loader), bạn có thể sử dụng bất cứ một trình dịch trước(preprocessor), dịch sau(post-processor), và thậm chí có thể tích hợp sâu với [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) -- tất cả chỉ với `<style>`.
 
 ### Scale
 
@@ -184,17 +200,25 @@ Vue doesn't suffer from this at all because it uses a transparent dependency-tra
 
 Interestingly, there are quite a few similarities in how Angular and Vue are addressing these AngularJS issues.
 
-## Angular (Formerly known as Angular 2)
+## Angular (Từng được biết đến là Angular 2)
 
 We have a separate section for the new Angular because it really is a completely different framework from AngularJS. For example, it features a first-class component system, many implementation details have been completely rewritten, and the API has also changed quite drastically.
+
+Chúng tôi có một phần riêng dành cho Angular mới bởi vì nó thực sự là một framework mới hoàn toàn so với AngularJS. Ví dụ,
 
 ### TypeScript
 
 Angular essentially requires using TypeScript, given that almost all its documentation and learning resources are TypeScript-based. TypeScript has its benefits - static type checking can be very useful for large-scale applications, and can be a big productivity boost for developers with backgrounds in Java and C#.
 
+Angular về cơ bản yêu cầu sử dụng TypeScript, bằng chứng là hầu hết tất cả tài liệu hướng dẫn và học tập đều dựa trên TypeScript. TypeScript có cho mình những lợi ích - kiểm tra kiểu tĩnh sẽ rất có ích cho những ứng dụng quy mô lớn, và có thể làm tăng hiệu quả làm việc cho những developer có nền tảng với Java và C#.
+
 However, not everyone wants to use TypeScript. In many smaller-scale use cases, introducing a type system may result in more overhead than productivity gain. In those cases you'd be better off going with Vue instead, since using Angular without TypeScript can be challenging.
 
+Tuy nhiên, không phải tất cả mọi người đều muốn sử dụng TypeScript. Trong nhiều trường hợp những ứng dụng nhỏ, việc có một hệ thống kiểu có thể gấy rối trí nhiều hơn là hiệu quả. Trong những trường hợp đó, bạn tốt nhất nên dùng Vue, bởi vì sử dụng Angular mà không có TypeScript có thể khá thử thách.
+
 Finally, although not as deeply integrated with TypeScript as Angular is, Vue also offers [official typings](https://github.com/vuejs/vue/tree/dev/types) and [official decorator](https://github.com/vuejs/vue-class-component) for those who wish to use TypeScript with Vue. We are also actively collaborating with the TypeScript and VSCode teams at Microsoft to improve the TS/IDE experience for Vue + TS users.
+
+Cuối cùng, mặc dù không tích hợp sâu với TypeScript như Angular, Vue cũng cung cấp [các kiểu chính thức](https://github.com/vuejs/vue/tree/dev/types) và [decorator chính thức](https://github.com/vuejs/vue-class-component) cho những ai ước rằng có thể sử dụng TypeScript với Vue. Chúng tôi cũng tích cực hợp tác với nhóm làm TypeScript và VSCode của Microsoft để nâng cao trải nghiệm của TS/IDE cho Vue và người dùng TypeScript.
 
 ### Kích thước và hiệu suát
 
@@ -212,7 +236,7 @@ Vue is much less opinionated than Angular, offering official support for a varie
 
 Vue ít cứng nhắc hơn nhiều so với Angular, với việc hỗ trợ chính thức cho nhiều hệ xây dựng khác nhau và không có một giới hạn nào trong việc bạn cấu trúc ứng dụng của mình. Nhiều nhà phát triển thích sự tự do này, trong khi những người khác thì thích chỉ có duy nhất một cách đúng để xây dựng ứng dụng.
 
-### Learning Curve
+### Lộ trình học tập
 
 To get started with Vue, all you need is familiarity with HTML and ES5 JavaScript (i.e. plain JavaScript). With these basic skills, you can start building non-trivial applications within less than a day of reading [the guide](./).
 
