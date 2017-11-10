@@ -107,7 +107,11 @@ Cho những ứng dụng lớn, cả Vue và React đều cung cấp những gi�
 
 Another important difference between these offerings is that Vue's companion libraries for state management and routing (among [other concerns](https://github.com/vuejs)) are all officially supported and kept up-to-date with the core library. React instead chooses to leave these concerns to the community, creating a more fragmented ecosystem. Being more popular though, React's ecosystem is considerably richer than Vue's.
 
+Một điểm khác biệt quan trọng nữa giữa những đề xuất này là những thư viện quản ly state và điều hương của Vue (giữa [những mối quan tâm khác](https://github.com/vuejs)) được hỗ trợ chính thức và cập nhật mới nhất cùng với thư viện chính. React thay vào đó lựa chọn để những vấn đề này cho cộng đồng, tạo ra một hệ sinh thái phân mảnh hơn. Là một framework nổi tiếng hơn, hệ sinh thái của React giàu có hơn rõ rệt so với Vue.
+
 Finally, Vue offers a [CLI project generator](https://github.com/vuejs/vue-cli) that makes it trivially easy to start a new project using your choice of build system, including [webpack](https://github.com/vuejs-templates/webpack), [Browserify](https://github.com/vuejs-templates/browserify), or even [no build system](https://github.com/vuejs-templates/simple). React is also making strides in this area with [create-react-app](https://github.com/facebookincubator/create-react-app), but it currently has a few limitations:
+
+Cuối cùng, Vue cung cấp một [dự án CLI generator](https://github.com/vuejs/vue-cli) cho phép bạn có thể dễ dàng bắt dầu một project mới với tùy chọn hệ thống xây dựng, bao gồm [webpack](https://github.com/vuejs-templates/webpack), [Browserify](https://github.com/vuejs-templates/browserify), hoặc thậm chí [không có hệ thống build](https://github.com/vuejs-templates/simple). React cũng có [create-react-app](https://github.com/facebookincubator/create-react-app), nhưng hiện tại nó đang có một vài hạn chế:
 
 - It does not allow any configuration during project generation, while Vue's project templates allow [Yeoman](http://yeoman.io/)-like customization.
 - It only offers a single template that assumes you're building a single-page application, while Vue offers a wide variety of templates for various purposes and build systems.
@@ -119,7 +123,7 @@ It's important to note that many of these limitations are intentional design dec
 
 React is renowned for its steep learning curve. Before you can really get started, you need to know about JSX and probably ES2015+, since many examples use React's class syntax. You also have to learn about build systems, because although you could technically use Babel Standalone to live-compile your code in the browser, it's absolutely not suitable for production.
 
-React
+React nổi tiếng vì việc học khó của nó. Trước khi bạn có thể bắt đầu
 
 Trong khi Vue mở rộng tốt ngang, nếu không nói là tốt hơn React, Vue có thể thu hẹp lại như jQuery. Đúng vậy - tất cả những gì bạn phải làm là đặt một thẻ scrip vào trong một trang:
 
@@ -213,6 +217,8 @@ Vue ít cứng nhắc hơn nhiều so với Angular, với việc hỗ trợ ch�
 
 Ember is a full-featured framework that is designed to be highly opinionated. It provides a lot of established conventions and once you are familiar enough with them, it can make you very productive. However, it also means the learning curve is high and flexibility suffers. It's a trade-off when you try to pick between an opinionated framework and a library with a loosely coupled set of tools that work together. The latter gives you more freedom but also requires you to make more architectural decisions.
 
+Ember là một framework đầy đủ tính năng, được thiết kế
+
 That said, it would probably make a better comparison between Vue core and Ember's [templating](https://guides.emberjs.com/v2.10.0/templates/handlebars-basics/) and [object model](https://guides.emberjs.com/v2.10.0/object-model/) layers:
 
 - Vue provides unobtrusive reactivity on plain JavaScript objects and fully automatic computed properties. In Ember, you need to wrap everything in Ember Objects and manually declare dependencies for computed properties.
@@ -232,15 +238,13 @@ Nó rõ ràng có vẻ hơi chủ quan, nhưng nhiều người cho rằng API c
 
 ## Polymer
 
-Polymer is yet another Google-sponsored project and in fact was a source of inspiration for Vue as well. Vue's components can be loosely compared to Polymer's custom elements and both provide a very similar development style. The biggest difference is that Polymer is built upon the latest Web Components features and requires non-trivial polyfills to work (with degraded performance) in browsers that don't support those features natively. In contrast, Vue works without any dependencies or polyfills down to IE9.
-
 Polymer là một project được Google tài trợ và thực tế cũng là một nguồn cảm hứng cho Vue. Component của Vue có thể khá giống với 'custom element' của Polymer và cả 2 cùng cung cấp một phong cách phát triển tương tự nhau. Sự khác nhau lớn nhất là Polymer được xây dựng dựa trên tính năng mới nhất của Web Componets và yêu cầu những polyfill () quan trọng để hoạt động (với hiệu năng giảm) trên những trình duyệt không hỗ trợ mặc định những tính năng đó. Ngược lại, Vue hoạt động mà không cần bất cứ điểu kiện tiên quyết hay polyfill xuống IE9.
 
-In Polymer 1.0, the team has also made its data-binding system very limited in order to compensate for the performance. For example, the only expressions supported in Polymer templates are boolean negation and single method calls. Its computed property implementation is also not very flexible.
-
-Trong Polymer 1.0, đội phát triển
+Trong Polymer 1.0, đội phát triển Polymer đã làm việc hệ thống kết nối data rất giới hạn để bù lại được tốc độ. Ví dụ, những biểu thức được hỗ trợ bởi Polymer template là biểu thức logic và những lời gọi đơn hàm. Những cài đặt được tính toán cũng rất hạn chế.
 
 Polymer custom elements are authored in HTML files, which limits you to plain JavaScript/CSS (and language features supported by today's browsers). In comparison, Vue's single file components allows you to easily use ES2015+ and any CSS preprocessors you want.
+
+Những custom element của Polymer được viets trong các file HTML, chúng giới hạn bạn với JavaScript và CSS thuần (và những ngôn ngữ tính năng được hỗ trợ bởi các trình duyệt hiện nay). Trong khi đó, các component đơn file
 
 When deploying to production, Polymer recommends loading everything on-the-fly with HTML Imports, which assumes browsers implementing the spec, and HTTP/2 support on both server and client. This may or may not be feasible depending on your target audience and deployment environment. In cases where this is not desirable, you will have to use a special tool called Vulcanizer to bundle your Polymer elements. On this front, Vue can combine its async component feature with webpack's code-splitting feature to easily split out parts of the application bundle to be lazy-loaded. This ensures compatibility with older browsers while retaining great app loading performance.
 
