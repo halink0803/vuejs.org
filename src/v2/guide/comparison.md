@@ -15,8 +15,7 @@ Chúng tôi cũng muốn **các bạn** giúp cho tài liệu này được cậ
 React và Vue chia sẻ nhiều điểm tương đồng. Cả 2 đều:
 
 - sử dụng một virtual DOM()
-- provide reactive and composable view components
-- Cung cấp các view component có thể tương tác và
+- Cung cấp các view component có thể tương tác và xây dựng được.
 - Tập trung duy trì phần lõi của thư viện, với những tính năng ví dụ như routing(điều hướng) và quản lý trạng thái toàn cục được giải quyết bằng các thư viện hỗ trợ
 
 Do rất giống nhau trên nhiều khía cạnh, chúng tôi đã dành nhiều thời gian hơn để điều chỉnh phần so sánh này nhiều hơn các phần khác. Chúng tôi muốn chắn chắn rằng không chỉ có sự chính xác về kĩ thuật, mà còn cân bằng về nội dung. Chúng tôi chỉ ra những điểu mà React vượt trội hơn Vue, ví dụ như sự đa dạng của hệ sinh thái của họ và sự phong phú của những renderer đặc trưng.
@@ -101,29 +100,23 @@ Cuối cùng, styling trong một file (single-file) của Vue rất linh hoạt
 
 #### Scaling Up - Mở rộng
 
-For large applications, both Vue and React offer robust routing solutions. The React community has also been very innovative in terms of state management solutions (e.g. Flux/Redux). These state management patterns and [even Redux itself](https://github.com/egoist/revue) can be easily integrated into Vue applications. In fact, Vue has even taken this model a step further with [Vuex](https://github.com/vuejs/vuex), an Elm-inspired state management solution that integrates deeply into Vue that we think offers a superior development experience.
-
 Cho những ứng dụng lớn, cả Vue và React đều cung cấp những giải pháp điều hướng (routing) thiết thực. Cộng đồng React cũng rất sáng tạo trong các giải pháp quản quản lý trạng thái (ví dụ: Flux/Redux). Những mô hình quản lý trạng thái và [thậm chí chính Redux](https://github.com/egoist/revue) có thể dễ dàng tích hợp vào những ứng dụng Vue. Không những thế, Vue còn còn thể áp dụng mô hình này một bước xa hơn với [Vuex](https://github.com/vuejs/vuex), một giải pháp quản lý trạng thái lấy cảm hứng từ Elm mà tích hợp sâu vào trong Vue mà chúng tôi cho là cung cấp một trải nghiệp phát triển tốt hơn.
 
-Another important difference between these offerings is that Vue's companion libraries for state management and routing (among [other concerns](https://github.com/vuejs)) are all officially supported and kept up-to-date with the core library. React instead chooses to leave these concerns to the community, creating a more fragmented ecosystem. Being more popular though, React's ecosystem is considerably richer than Vue's.
-
-Một điểm khác biệt quan trọng nữa giữa những đề xuất này là những thư viện quản ly state và điều hương của Vue (giữa [những mối quan tâm khác](https://github.com/vuejs)) được hỗ trợ chính thức và cập nhật mới nhất cùng với thư viện chính. React thay vào đó lựa chọn để những vấn đề này cho cộng đồng, tạo ra một hệ sinh thái phân mảnh hơn. Là một framework nổi tiếng hơn, hệ sinh thái của React giàu có hơn rõ rệt so với Vue.
-
-Finally, Vue offers a [CLI project generator](https://github.com/vuejs/vue-cli) that makes it trivially easy to start a new project using your choice of build system, including [webpack](https://github.com/vuejs-templates/webpack), [Browserify](https://github.com/vuejs-templates/browserify), or even [no build system](https://github.com/vuejs-templates/simple). React is also making strides in this area with [create-react-app](https://github.com/facebookincubator/create-react-app), but it currently has a few limitations:
+Một điểm khác biệt quan trọng nữa giữa những đề xuất này là những thư viện quản lý trạng thái và điều hướng của Vue (giữa [những mối quan tâm khác](https://github.com/vuejs)) được hỗ trợ chính thức và cập nhật mới nhất cùng với thư viện chính. React thay vào đó lựa chọn để những vấn đề này cho cộng đồng, tạo ra một hệ sinh thái phân mảnh hơn. Là một framework nổi tiếng hơn, hệ sinh thái của React giàu có hơn rõ rệt so với Vue.
 
 Cuối cùng, Vue cung cấp một [dự án CLI generator](https://github.com/vuejs/vue-cli) cho phép bạn có thể dễ dàng bắt dầu một project mới với tùy chọn hệ thống xây dựng, bao gồm [webpack](https://github.com/vuejs-templates/webpack), [Browserify](https://github.com/vuejs-templates/browserify), hoặc thậm chí [không có hệ thống build](https://github.com/vuejs-templates/simple). React cũng có [create-react-app](https://github.com/facebookincubator/create-react-app), nhưng hiện tại nó đang có một vài hạn chế:
 
-- It does not allow any configuration during project generation, while Vue's project templates allow [Yeoman](http://yeoman.io/)-like customization.
-- It only offers a single template that assumes you're building a single-page application, while Vue offers a wide variety of templates for various purposes and build systems.
+- Nó không cho phép bất cứ lựa chọn cài đặt nào trong quá trình sinh dự án, trong khi các mẫu dự án của Vue cho phép thay đổi như là [Yeoman](http://yeoman.io/)
+
+- Nó chỉ cung cấp một template đơn cho bạn xây dựng một ứng dụng đơn trang, trong khi Vue cung cấp rất rộng và đa dạng những template cho những mục đích và hệ thống xây dựng khác nhau.
+
 - It cannot generate projects from user-built templates, which can be especially useful for enterprise environments with pre-established conventions.
 
-It's important to note that many of these limitations are intentional design decisions made by the create-react-app team and they do have their advantages. For example, as long as your project's needs are very simple and you never need to "eject" to customize your build process, you'll be able to update it as a dependency. You can read more about the [differing philosophy here](https://github.com/facebookincubator/create-react-app#philosophy).
+Nó là quan trọng để lưu ý là rất nhiều những hạn chế này là chủ ý thiết kế của nhóm phát triển create-react-app và chúng thực sự có những lợi thế. Ví dụ, chừng nào mà dự án của bạn cần thật đơn giản, và bạn không bao giờ cần "eject" để thay đổi quá trình xây dựng của bạn, bạn sẽ có thể cập nhật nó như là một điều kiện tiên quyết. Bạn có thể đọc thêm về [khác biệt triết lý tại đây](https://github.com/facebookincubator/create-react-app#philosophy)
 
 #### Scaling Down - Thu hẹp
 
-React is renowned for its steep learning curve. Before you can really get started, you need to know about JSX and probably ES2015+, since many examples use React's class syntax. You also have to learn about build systems, because although you could technically use Babel Standalone to live-compile your code in the browser, it's absolutely not suitable for production.
-
-React nổi tiếng vì việc học khó của nó. Trước khi bạn có thể bắt đầu
+React nổi tiếng vì việc học khó của nó. Trước khi bạn có thể bắt đầu, bạn cần phải biết về JSX và có thể cả ES2015+, từ rất nhiều ví dụ sử dụng cú pháp class của React. Bạn cũng sẽ phải học về các hệ thống build, bởi vì cho dù bạn có thể về mặt kĩ thuật sử dụng độc lập Babel để dịch trực tiếp code của bạn trên trình duyệt, thì nó cũng hoàn toàn không phù hợp cho sản phẩm cuối cùng.
 
 Trong khi Vue mở rộng tốt ngang, nếu không nói là tốt hơn React, Vue có thể thu hẹp lại như jQuery. Đúng vậy - tất cả những gì bạn phải làm là đặt một thẻ scrip vào trong một trang:
 
@@ -167,8 +160,6 @@ AngularJS sử dụng binding hai chiều giữa các scope, trong khi Vue ép v
 
 ### Directives vs Components
 
-Vue has a clearer separation between directives and components. Directives are meant to encapsulate DOM manipulations only, while components are self-contained units that have their own view and data logic. In AngularJS, there's a lot of confusion between the two.
-
 Vue có sự phân định rạch ròi giữa directive và component. Directive chỉ được dùng để đóng gói sự mô phỏng DOM, trong khi component là những đơn vị có đầy đủ view và logic dữ liệu. Trong AngularJS, có rất nhiều sự không rõ ràng giữa directive và component.
 
 ### Hiệu suất
@@ -177,13 +168,9 @@ Vue has better performance and is much, much easier to optimize because it doesn
 
 Vue có hiệu suất tốt hơn và dễ dàng hơn rất nhiều để tối ưu bởi vì nó không sử dụng 'dirty checking'. AngularJS trở nên slow khi nó sử dụng rất nhiều watcher, bởi bất cứ khi nào phạm vi thay đổi, tất cả watcher cần phải được đánh giá lại lần nữa.
 
-Vue doesn't suffer from this at all because it uses a transparent dependency-tracking observation system with async queueing - all changes trigger independently unless they have explicit dependency relationships.
+Vue không phải chịu đựng những hạn chế trên bởi vì nó sử dụng một hệ thống giám sát yêu cầu trong suốt với hàng đợi bất đồng bộ - tất cả những thay đổi được bật/tắt độc lập trừ khi chúng có quan hệ phụ thuộc rõ ràng.
 
-Vue không phải chịu đựng những hạn chế trên bởi vì nó sử dụng một hệ thống giám sát yêu cầu trong suốt với hàng đợi bất đồng bộ - tất cả những thay đổi được "trigger" độc lập trừ khi chúng có quan hệ phụ thuộc rõ ràng.
-
-Interestingly, there are quite a few similarities in how Angular and Vue are addressing these AngularJS issues.
-
-Thú vị là có nhiều điểm tương đồng trong cách mà Angular và Vue đang tiếp cận các vấn đề này của AngularJS
+Thú vị là có nhiều điểm tương đồng trong cách mà Angular và Vue đang tiếp cận các vấn đề này của AngularJS.
 
 ## Angular (Từng được biết đến là Angular 2)
 
@@ -215,17 +202,15 @@ Vue ít cứng nhắc hơn nhiều so với Angular, với việc hỗ trợ ch�
 
 ## Ember
 
-Ember is a full-featured framework that is designed to be highly opinionated. It provides a lot of established conventions and once you are familiar enough with them, it can make you very productive. However, it also means the learning curve is high and flexibility suffers. It's a trade-off when you try to pick between an opinionated framework and a library with a loosely coupled set of tools that work together. The latter gives you more freedom but also requires you to make more architectural decisions.
+Ember là một framework đầy đủ tính năng, [is designed to be highly opinionated]. Nó cung cấp rất nhiều quy ước và một khi bạn đã quen với chúng, nó có thể giúp bạn làm việc rất hiệu quả. Tuy nhiên, điều đó cũng có nghĩa là bạn phải học rất nhiều và hi sinh sự linh hoạt. Nó là một cuộc đánh đổi khi bạn chọn giữa một framework cấu trúc và một thư viện với một tập hợp các công cụ làm việc với nhau. Sự lựa chọn sau cho bạn nhiều tự do hơn nhưng cũng yêu cầu bạn đưa ra nhiều quyết định cấu trúc hơn.
 
-Ember là một framework đầy đủ tính năng, được thiết kế
+Do vậy, sẽ là hợp lý hơn nếu so sánh Vue core với những lớp Ember [template](https://guides.emberjs.com/v2.10.0/templates/handlebars-basics/) và [mô hình đối tượng](https://guides.emberjs.com/v2.10.0/object-model/):
 
-That said, it would probably make a better comparison between Vue core and Ember's [templating](https://guides.emberjs.com/v2.10.0/templates/handlebars-basics/) and [object model](https://guides.emberjs.com/v2.10.0/object-model/) layers:
+- Vue cung cấp những tương tác kín trên những đối tượng JavaScript thuần và được tính toán tự động những thuộc tính. Trong Ember, bạn cần phải bọc mọi thứ trong những đối tượng Ember và khai báo các phần phụ thuộc cho những thuộc tính cần tính toán.
 
-- Vue provides unobtrusive reactivity on plain JavaScript objects and fully automatic computed properties. In Ember, you need to wrap everything in Ember Objects and manually declare dependencies for computed properties.
+- Cú pháp template của Vue khai thác toàn bộ sức mạnh của các biểu thức JavaScript, trong khi các cú pháp và biểu thức của Handlebars khá là hạn chế.
 
-- Vue's template syntax harnesses the full power of JavaScript expressions, while Handlebars' expression and helper syntax is intentionally quite limited in comparison.
-
-- Performance-wise, Vue outperforms Ember [by a fair margin](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html), even after the latest Glimmer engine update in Ember 2.x. Vue automatically batches updates, while in Ember you need to manually manage run loops in performance-critical situations.
+- Về hiệu suất, Vue vượt qua Ember [với khoảng cách đáng kể](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html), thậm chí là sau khi engine mới nhất Glimmer cập nhật trên Ember 2.x. Những bản cập nhật của Vue được tự động nâng cấp, trong khi với Ember bạn cần phải chạy bằng lặp bằng tay trong những tình huống nặng về hiệu suất.
 
 ## Knockout
 
