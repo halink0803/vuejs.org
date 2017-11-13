@@ -6,7 +6,7 @@ order: 801
 
 Đây chắc chắc là trang khó nhất để viết trong toàn bộ phần hướng dẫn này, nhưng chúng tôi cảm thấy nó quan trọng. Có điều chắc chắn là, bạn có các vấn đề bạn đã cố gắng giải quyết và sử dụng một thư viện khác để làm việc đó. Bạn ở đây bởi vì bạn muốn biết xem Vue có thể giải quyết chúng tốt hơn không. Và đó là cái mà chúng tôi hi vọng sẽ cho bạn câu trả lời.
 
-Chúng tôi cũng rất cố gắng để tránh thiên vị. Là những thành viên chính, chúng tôi chắc chắc thích Vue rất nhiều. Có những vấn đề chúng tôi nghĩ Vue giải quyết tốt hơn bất cứ thư viên nào khác. Nếu chúng tôi không tin tưởng vào điều đó, chúng tôi sẽ không tiếp tục xây dụng Vue. Mặc dù vậy, chúng tôi cũng muốn sự công bằng và chính xác. Khi những thư viện khác cung cấp những lợi ích đáng kể, ví dụ như hệ sinh thái đồ sộ các renderer thay thế của React hay việc Knockout hỗ trợ trình duyệt tới tận IE6, chúng tôi cũng cố gắng liệt kê chúng.
+Chúng tôi cũng rất cố gắng để tránh thiên vị. Là những thành viên chính, chúng tôi chắc chắc thích Vue rất nhiều. Có những vấn đề chúng tôi nghĩ Vue giải quyết tốt hơn bất cứ thư viện nào khác. Nếu chúng tôi không tin tưởng vào điều đó, chúng tôi sẽ không tiếp tục xây dụng Vue. Mặc dù vậy, chúng tôi cũng muốn sự công bằng và chính xác. Khi những thư viện khác cung cấp những lợi ích đáng kể, ví dụ như hệ sinh thái đồ sộ các renderer thay thế của React hay việc Knockout hỗ trợ trình duyệt tới tận IE6, chúng tôi cũng cố gắng liệt kê chúng.
 
 Chúng tôi cũng muốn **các bạn** giúp cho tài liệu này được cập nhật bởi vì "thế giới" JavaScript phát triển rất nhanh! Nếu bạn nhận ra một sự thiếu chính xác hoặc một cái gì đó có vẻ không đúng, vui lòng cho chúng tôi biết bằng việc [mở một issue](https://github.com/vuejs/vuejs.org/issues/new?title=Inaccuracy+in+comparisons+guide).
 
@@ -30,23 +30,15 @@ Cả React và Vue đều cung cấp một hiệu suất khá tương đồng tr
 
 #### Nỗ lực tối ưu
 
-In React, when a component's state changes, it triggers the re-render of the entire component sub-tree, starting at that component as root. To avoid unnecessary re-renders of child components, you need to either use `PureComponent` or implement `shouldComponentUpdate` whenever you can. You may also need to use immutable data structures to make your state changes more optimization-friendly. However, in certain cases you may not be able to rely on such optimizations because `PureComponent/shouldComponentUpdate` assumes the entire sub tree's render output is determined by the props of the current component. If that is not the case, then such optimizations may lead to inconsistent DOM state.
+Trong React, khi state của một component thay đổi, nó sẽ render lại toàn bộ component phụ, bắt đầu từ component đó như là gốc. Để tránh việc render lại component con một cách không cần thiết, bạn hoặc là phải sử dụng `PureComponent` hoặc cài đặt `shouldComponentUpdate` khi có thể. Bạn có thể cũng cần phải sử dụng cấu trúc dữ liệu không thay đổi để làm cho việc thay đổi state dễ dàng tối ưu. Tuy nhiên, trong những trường hợp cụ thể, bạn không thể nào tin tưởng vào vào những sự tối ưu đó bởi vì `PureComponent/shouldComponentUpdate` giả sử rằng toàn bộ đầu ra của cây phụ được xác định bởi những thuộc tính (props) của component hiện tại. Nếu không trong trường hợp đó, thì sự tối ưu hóa này có thể dẫn tới sự không ổn định trạng thái của DOM.
 
-Trong React, khi state của một component thay đổi, nó sẽ render lại toàn bộ component phụ, bắt đầu từ component đó như là gốc. Để tránh việc render lại component con một cách không cần thiết, bạn hoặc là phải sử dụng `PureComponent` hoặc cài đặt `shouldComponentUpdate` khi có thể. Bạn có thể cũng cần phải sử dụng cấu trúc dữ liệu không thay đổi để làm cho việc thay đổi state dễ dàng tối ưu. Tuy nhiên, trong những trường hợp cụ thể, bạn không thể nào tin tưởng vào
+Trong Vue, những dependencies của một component được tự động theo dõi khi nó được render, nhờ đó hệ thống biết chính xác component nào thực sự cần được render lại khi có thay đổi về trạng thái. Mỗi component có thể được hiểu là tự động có `shouldComponentUpdate` được cài đặt sẵn cho bạn mà không cần thông báo những component lồng nhau(???).
 
-In Vue, a component's dependencies are automatically tracked during its render, so the system knows precisely which components actually need to re-render when state changes. Each component can be considered to have `shouldComponentUpdate` automatically implemented for you, without the nested component caveats.
-
-Trong Vue, những dependencies của một component được tự động theo dõi khi nó được render, nhờ đó hệ thống biết chính xác component nào thực sự cần được render lại khi có thay đổi về trạng thái. Mỗi component có thể được hiểu là tự động có `shouldComponentUpdate` được cài đặt sẵn cho bạn mà không
-
-Overall this removes the need for a whole class of performance optimizations from the developer's plate, and allows them to focus more on building the app itself as it scales.
+Nói chung việc này giúp lập trình viên không cần phải lo về việc tối ưu hóa hiệu suất của class, và cho phép họ tập trung hơn vào việc xây dựng ứng dụng cũng như mở rộng nó.
 
 ### HTML & CSS
 
-In React, everything is just JavaScript. Not only are HTML structures expressed via JSX, the recent trends also tend to put CSS management inside JavaScript as well. This approach has its own benefits, but also comes with various trade-offs that may not seem worthwhile for every developer.
-
 Trong React, tất cả mọi thứ đều là JavaScript. Không những cấu trúc HTML được biểu diễn qua JSX, mà một số xu hướng gần đây đưa phần quản lý CSS vào bên trong JavaScript nữa. Cách tiếp cận này có những lợi ích của nó, nhưng đồng thời cũng phải trả giá mà có vẻ là không đáng cho tất cả mọi nhà phát triển.
-
-Vue embraces classic web technologies and builds on top of them. To show you what that means, we'll dive into some examples.
 
 Vue dựa vào những công nghệ web cổ điển và xây dựng trên chúng. Để chỉ cho bạn nó có nghĩa là như thế nào, chúng tôi sẽ đi sâu ào một vài ví dụ.
 
@@ -164,9 +156,7 @@ Vue có sự phân định rạch ròi giữa directive và component. Directive
 
 ### Hiệu suất
 
-Vue has better performance and is much, much easier to optimize because it doesn't use dirty checking. AngularJS becomes slow when there are a lot of watchers, because every time anything in the scope changes, all these watchers need to be re-evaluated again. Also, the digest cycle may have to run multiple times to "stabilize" if some watcher triggers another update. AngularJS users often have to resort to esoteric techniques to get around the digest cycle, and in some situations, there's no way to optimize a scope with many watchers.
-
-Vue có hiệu suất tốt hơn và dễ dàng hơn rất nhiều để tối ưu bởi vì nó không sử dụng 'dirty checking'. AngularJS trở nên slow khi nó sử dụng rất nhiều watcher, bởi bất cứ khi nào phạm vi thay đổi, tất cả watcher cần phải được đánh giá lại lần nữa.
+Vue có hiệu suất tốt hơn và dễ dàng hơn rất nhiều để tối ưu bởi vì nó không sử dụng 'dirty checking'. AngularJS trở nên slow khi nó sử dụng rất nhiều watcher, bởi bất cứ khi nào phạm vi thay đổi, tất cả watcher cần phải được đánh giá lại lần nữa. Hơn thế nữa, chu trình xử lý (digest cycle) có thể sẽ phải chạy nhiều lần để "ổn định" nếu có một vài watcher bật một cập nhật khác. Người dùng AngularJS thường phải dùng những phương pháp riêng để lách qua chu trình xử lý, và trong một vài tình huống, thì không có cách nào để tối ưu một phạm vi có nhiều watcher.
 
 Vue không phải chịu đựng những hạn chế trên bởi vì nó sử dụng một hệ thống giám sát yêu cầu trong suốt với hàng đợi bất đồng bộ - tất cả những thay đổi được bật/tắt độc lập trừ khi chúng có quan hệ phụ thuộc rõ ràng.
 
@@ -227,17 +217,11 @@ Polymer là một project được Google tài trợ và thực tế cũng là m
 
 Trong Polymer 1.0, đội phát triển Polymer đã làm việc hệ thống kết nối data rất giới hạn để bù lại được tốc độ. Ví dụ, những biểu thức được hỗ trợ bởi Polymer template là biểu thức logic và những lời gọi đơn hàm. Những cài đặt được tính toán cũng rất hạn chế.
 
-Polymer custom elements are authored in HTML files, which limits you to plain JavaScript/CSS (and language features supported by today's browsers). In comparison, Vue's single file components allows you to easily use ES2015+ and any CSS preprocessors you want.
+Những custom element của Polymer được viết trong các file HTML, chúng giới hạn bạn với JavaScript và CSS thuần (và những ngôn ngữ tính năng được hỗ trợ bởi các trình duyệt hiện nay). Trong khi đó, các component đơn file của Vue cho phép bạn có thể dễ dàng sử dụng ES2015+ và bất cứ trình tiền xử lý CSS nào mà bạn muốn.
 
-Những custom element của Polymer được viets trong các file HTML, chúng giới hạn bạn với JavaScript và CSS thuần (và những ngôn ngữ tính năng được hỗ trợ bởi các trình duyệt hiện nay). Trong khi đó, các component đơn file
+Khi chạy một sản phẩm, Polymer khuyến khích tải mọi thứ on-the-fly() với HTML Imports, với việc giả sử rằng các trình duyệt đều được tích hợp spec và hỗ trợ HTTP/2 ở cả server và client. Việc này là có thể hoặc không thể phụ thuộc vào đối tượng người dùng và môi trường mà ứng dụng được chạy. Trong trường hợp mà việc này không khả thi, bạn sẽ phải sử dụng một công cụ đặc biệt gọi là Vulcanizer để đóng gói các element Polymer của bạn. Trong lĩnh vực này, Vue có thể kết hợp tính năng component bất đồng bộ của nó với tính năng code-splitting của webpack để dễ dàng chia các phần của ứng dụng để đóng gói và lazy-loaded. Việc này đảm bảo chắc chắn tính tương thích với những trình duyệt cũ hơn trong khi vẫn giữ được hiệu suất tải ứng dụng tuyệt vời.
 
-When deploying to production, Polymer recommends loading everything on-the-fly with HTML Imports, which assumes browsers implementing the spec, and HTTP/2 support on both server and client. This may or may not be feasible depending on your target audience and deployment environment. In cases where this is not desirable, you will have to use a special tool called Vulcanizer to bundle your Polymer elements. On this front, Vue can combine its async component feature with webpack's code-splitting feature to easily split out parts of the application bundle to be lazy-loaded. This ensures compatibility with older browsers while retaining great app loading performance.
-
-Khi chạy một sản phẩm, Polymer khuyến khích tải mọi thứ on-the-fly()
-
-It is also totally feasible to offer deeper integration between Vue with Web Component specs such as Custom Elements and Shadow DOM style encapsulation - however at this moment we are still waiting for the specs to mature and be widely implemented in all mainstream browsers before making any serious commitments.
-
-Nó hoàn toàn là có thể để cung cấp một sự tích hợp sâu hơn giữa Vue và Web Component ví dụ như Custom Elements và Shadow DOM đóng vói các style - tuy nhiên vào thời điểm hiện tại, chúng tôi vẫn đang chờ cho những tính năng đó được hoàn thiện và được cài đặt rộng rãi ở tất cả các trình duyệt phổ biến trước khi tạo bất cứ sự cam kết nghiêm túc với chúng.
+Nó hoàn toàn là có thể để cung cấp một sự tích hợp sâu hơn giữa Vue và Web Component ví dụ như Custom Elements và Shadow DOM đóng gói các style - tuy nhiên vào thời điểm hiện tại, chúng tôi vẫn đang chờ cho những tính năng đó được hoàn thiện và được cài đặt rộng rãi ở tất cả các trình duyệt phổ biến trước khi tạo bất cứ sự cam kết nghiêm túc với chúng.
 
 ## Riot
 
